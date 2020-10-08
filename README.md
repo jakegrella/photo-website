@@ -1,3 +1,7 @@
+# photo-website
+
+Website to hold a portfolio of my photos and also sell prints, photo packages, etc.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
