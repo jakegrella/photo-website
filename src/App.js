@@ -1,32 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+// import logo from './logo.svg';
+import './styles/App.css';
+
+import axios from 'axios';
 
 //components
 import Header from './components/Header';
 import Gallery from './components/Gallery';
+import About from './components/About';
 
 function App() {
+	const [photos, setPhotos] = useState(null);
+	useEffect(() => {
+		axios
+			.get(
+				`https://api.unsplash.com/users/jakegrella/photos?client_id=L4591ozG82_pYS3W0BmQmQxfuhA8kKfhZS2P6PDl-Ak`
+			)
+			.then((res) => {
+				setPhotos(res.data);
+				console.log('photos', photos);
+			});
+	}, []);
+
 	return (
-		// <div className='App'>
-		// 	<header className='App-header'>
-		// 		<img src={logo} className='App-logo' alt='logo' />
-		// 		<p>
-		// 			Edit <code>src/App.js</code> and save to reload.
-		// 		</p>
-		// 		<a
-		// 			className='App-link'
-		// 			href='https://reactjs.org'
-		// 			target='_blank'
-		// 			rel='noopener noreferrer'
-		// 		>
-		// 			Learn React
-		// 		</a>
-		// 	</header>
-		// </div>
 		<>
 			<Header />
-			<Gallery />
+			{/* <Gallery photos={photos} /> */}
+			<About />
 		</>
 	);
 }
